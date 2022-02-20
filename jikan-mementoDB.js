@@ -39,11 +39,11 @@ Jikan.prototype.extra = function(id) {
     if (res.data.mal_id !== undefined) {
         result["mal_id"] = res.data.mal_id;
     }
-    if (res.data.title !== undefined) {
+    if (res.data.url !== undefined) {
         result["url"] = res.data.url;
     }
     if (res.data.images.jpg.image_url !== undefined) {
-        result["image"] = res.data.images.jpg.image_url;
+        result["image"] = res.data.images.jpg.image_url.map(function(e) { return e.uri; }).join();
     }
     if (res.data.title !== undefined) {
         result["title"] = res.data.title;
