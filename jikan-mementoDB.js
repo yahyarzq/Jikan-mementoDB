@@ -271,7 +271,6 @@ Jikan.prototype.search = function(query) {
   return json.data;  
 }
 
-const jsonreader = toJsonreader(json);
 
 /**
 @param {string} id - The resource identifier.
