@@ -26,7 +26,7 @@ var baseurl = "https://api.jikan.moe/v4/";
 Jikan.prototype.search = function(query) {
   var result = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
   var json = JSON.parse(result.body);
-  return json.results;  
+  return json.data;  
 }
 
 /**
@@ -36,7 +36,7 @@ Jikan.prototype.extra = function(id) {
     var resultJson = http().get(baseurl + this.type + "/" + id);
     var result = JSON.parse(resultJson.body); 
           
-    return result;
+    return result.data;
 }
 
 
