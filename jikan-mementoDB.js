@@ -43,7 +43,7 @@ Jikan.prototype.extra = function(id) {
         result["url"] = res.data.url;
     }
     if (res.data.images.jpg.image_url !== undefined) {
-        result["image"] = res.data.images.jpg.image_url.map(function(e) { return e.uri; }).join();
+        result["image"] = res.data.images.jpg.image_url;
     }
     if (res.data.title !== undefined) {
         result["title"] = res.data.title;
