@@ -93,7 +93,7 @@ Jikan.prototype.extra = function(id) {
     if (res.data.synopsis !== undefined) {
         result["synopsis"] = res.data.synopsis;
     }
-    if (res.data !== undefined) {
+    if (res.data) {
         result["resbody"] = res.data;
     }
     
