@@ -24,7 +24,7 @@ Issue a search query to Discogs database.
 var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
-  var result = http().get(baseurl + this.type + "?q="+ encodeURIComponent(query));
+  var result = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
   var json = JSON.parse(result.body);
   return json.results;  
 }
@@ -34,19 +34,8 @@ Jikan.prototype.search = function(query) {
 */
 Jikan.prototype.extra = function(id) {
     var resultJson = http().get(baseurl + this.type + "/" + id);
-    var result = JSON.parse(resultJson.body).data; 
-    if (result.images !== undefined) 
-        result['images'] = result.images.map(function(e) { return e.uri; }).join(); 
-    if (result.videos !== undefined) 
-        result['videos'] = result.videos.map(function(e) { return e.uri; }).join();     
-    if (result.artists !== undefined)
-        result['artists'] = result.artists.map(function(e) { return e.name; }).join();   
-    if (result.tracklist !== undefined)  
-        result['tracklist'] = result.tracklist.map(function(e) { return e.position + ". " + e.title + " " + e.duration; }).join("\n");     
-    if (result.styles !== undefined)  
-        result['styles'] = result.styles.join();     
-    if (result.genres !== undefined)
-        result['genres'] = result.genres.join();        
+    var result = JSON.parse(resultJson.body); 
+          
     return result;
 }
 
