@@ -34,7 +34,8 @@ Jikan.prototype.search = function(query) {
 */
 Jikan.prototype.extra = function(id) {
     var resultJson = http().get(baseurl + this.type + "/" + id);
-    var res = JSON.parse(resultJson.body);
+    var response = JSON.parse(resultJson);
+    var res = response.body
     var result = {};
     if (res.data.mal_id !== undefined) {
         result["mal_id"] = res.data.mal_id;
