@@ -43,7 +43,7 @@ Jikan.prototype.extra = function(id) {
         result["url"] = res.data.url;
     }
     if (res.data.images.jpg.image_url !== undefined) {
-        result["image"] = res.data.images.jpg.image_url;
+        result["image"] = res.data.images.jpg["image_url"];
     }
     if (res.data.title !== undefined) {
         result["title"] = res.data.title;
@@ -67,7 +67,7 @@ Jikan.prototype.extra = function(id) {
         result["status"] = res.data.status;
     }
     if (res.data.aired.string !== undefined) {
-        result["aired"] = res.data.aired.string;
+        result["aired"] = res.data.aired["string"];
     }
     if (res.data.duration !== undefined) {
         result["duration"] = res.data.duration;
