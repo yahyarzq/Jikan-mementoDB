@@ -25,9 +25,6 @@ var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
   var response = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  //var json = JSON.parse(result.body);
-  //return json.data;
-
   var res = JSON.parse(response);
   var result = res.body;
   
