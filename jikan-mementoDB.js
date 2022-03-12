@@ -24,8 +24,8 @@ Issue a search query to Jikan database.
 var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
-  var result = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  //var json = JSON.parse(result.body);
+  var resultJson = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
+  var json = JSON.parse(result.body);
   //return json.data;
 
   var response = JSON.parse(resultJson);
