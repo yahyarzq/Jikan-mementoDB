@@ -27,7 +27,7 @@ Jikan.prototype.search = function(query) {
   var response = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
   //var json = JSON.parse(result.body);
   //return json.data;
-  var res = JSON.parse(response)
+  var res = JSON.parse(response);
   var result = res.body;
   
   for (var index = 0; index < result.length; index++) {
