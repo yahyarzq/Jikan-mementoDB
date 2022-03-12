@@ -25,10 +25,23 @@ var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
   var response = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  var res = JSON.parse(response);
+  //var json = JSON.parse(result.body);
+  //return json.data;
+  var res = JSON.parse(response)
   var result = res.body;
   
-  
+  for (var index = 0; index < result.length; index++) {
+    result[index].data["jpg_image_url"] = result[index].data.images.jpg["image_url"];
+    result[index].data["jpg_small_image_url"] = result[index].data.images.jpg["small_image_url"];
+    result[index].data["jpg_large_image_url"] = result[index].data.images.jpg["large_image_url"];
+    result[index].data["webp_image_url"] = result[index].data.images.webp["image_url"];
+    result[index].data["webp_small_image_url"] = result[index].data.images.webp["small_image_url"];
+    result[index].data["webp_large_image_url"] = result[index].data.images.webp["large_image_url"];
+    result[index].data["aired_string"] = result[index].data.aired["string"];
+    result[index].data["aired_from"] = result[index].data.aired["from"];
+    result[index].data["aired_to"] = result[index].data.aired["to"];
+      
+  }
   return result.data;
 }
 
