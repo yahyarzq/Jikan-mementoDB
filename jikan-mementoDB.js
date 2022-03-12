@@ -31,7 +31,7 @@ Jikan.prototype.search = function(query) {
   var res = JSON.parse(response);
   var result = res.body;
   
-  for (let index = 0; index < result.length; index++) {
+  for (var index = 0; index < result.length; index++) {
     result[index].data["jpg_image_url"] = result[index].data.images.jpg["image_url"];
     result[index].data["jpg_small_image_url"] = result[index].data.images.jpg["small_image_url"];
     result[index].data["jpg_large_image_url"] = result[index].data.images.jpg["large_image_url"];
