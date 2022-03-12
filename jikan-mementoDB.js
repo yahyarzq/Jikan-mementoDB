@@ -25,8 +25,25 @@ var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
   var result = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  var json = JSON.parse(result.body);
-  return json.data;  
+  //var json = JSON.parse(result.body);
+  //return json.data;
+
+  var response = JSON.parse(resultJson);
+  var res = response.body;
+  var result = res;
+  result.forEach(jsonItem);
+  function jsonItem(item, index, arr) {
+    result[index]["jpg_image_url"] = result[index].data.images.jpg["image_url"];
+    result[index]["jpg_small_image_url"] = result[index].data.images.jpg["small_image_url"];
+    result[index]["jpg_large_image_url"] = result[index].data.images.jpg["large_image_url"];
+    result[index]["webp_image_url"] = result[index].data.images.webp["image_url"];
+    result[index]["webp_small_image_url"] = result[index].data.images.webp["small_image_url"];
+    result[index]["webp_large_image_url"] = result[index].data.images.webp["large_image_url"];
+    result[index]["aired_string"] = result[index].data.aired["string"];
+    result[index]["aired_from"] = result[index].data.aired["from"];
+    result[index]["aired_to"] = result[index].data.aired["to"];
+  }
+  return result;
 }
 
 /**
@@ -44,7 +61,7 @@ Jikan.prototype.extra = function(id) {
         result["url"] = res.data.url;
     };
     if (res.data.images.jpg.image_url !== undefined) {
-        result["image"] = res.data.images["jpg"]["image_url"];
+        result["image"] = res.data.images.jpg.image_url;
     };
     if (res.data.title !== undefined) {
         result["title"] = res.data.title;
@@ -68,7 +85,7 @@ Jikan.prototype.extra = function(id) {
         result["status"] = res.data.status;
     };
     if (res.data.aired.string !== undefined) {
-        result["aired"] = res.data.aired["string"];
+        result["aired"] = res.data.aired.string;
     };
     if (res.data.duration !== undefined) {
         result["duration"] = res.data.duration;
