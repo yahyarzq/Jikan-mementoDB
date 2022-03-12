@@ -24,13 +24,12 @@ Issue a search query to Jikan database.
 var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
-  var resultJson = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  var json = JSON.parse(result.body);
+  var response = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
+  //var json = JSON.parse(result.body);
   //return json.data;
 
-  var response = JSON.parse(resultJson);
-  var res = response.body;
-  var result = res;
+  var res = JSON.parse(response);
+  var result = res.body;
   result.forEach(jsonItem);
   function jsonItem(item, index, arr) {
     result[index]["jpg_image_url"] = result[index].data.images.jpg["image_url"];
