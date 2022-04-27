@@ -16,6 +16,10 @@ function Jikan (type) {
     this.type = type;
 }
 
+  /**
+  var json = JSON.parse(result.body);
+  return json.data;
+  */
 
 /**
 Issue a search query to Jikan database.
@@ -25,10 +29,6 @@ var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
   var http_data = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  /**
-  var json = JSON.parse(result.body);
-  return json.data;
-  */
   var response = JSON.parse(http_data);
   var result = response.body;
   return result.data;
