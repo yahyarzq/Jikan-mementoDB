@@ -1,4 +1,4 @@
-
+const httpCon = require('./http')
 
 
 /**
@@ -113,10 +113,7 @@ Jikan.prototype.extra = function(id) {
     if (res.data !== undefined) {
         result["resbody"] = res.data;
     };
-    
     return result;
 }
-
-
 
 
