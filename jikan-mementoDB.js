@@ -47,7 +47,7 @@ Jikan.prototype.extra = function(id) {
     if (res.data.url !== undefined) {
         result["url"] = res.data.url;
     };
-    if (res.data.images.jpg.image_url !== undefined) {
+    if (res.data.images.jpg.image_url) {
         result["image"] = res.data.images.jpg.image_url;
     };
     if (res.data.title !== undefined) {
