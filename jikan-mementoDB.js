@@ -27,19 +27,19 @@ Issue a search query to Jikan database.
 var baseurl = "https://api.jikan.moe/v4/";
 
 Jikan.prototype.search = function(query) {
-  var http_data = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
-  var response = JSON.parse(http_data.body);
-  var result = response;
-  return result.data;
+  var response = http().get(baseurl + this.type + "?q=" + encodeURIComponent(query));
+  var responseJson = JSON.parse(response.body);
+  var result = responseJson.data;
+  return result;
 }
 
 /**
 @param {string} id - The resource identifier.
 */
 Jikan.prototype.extra = function(id) {
-    var resultJson = http().get(baseurl + this.type + "/" + id);
-    var response = JSON.parse(resultJson);
-    var res = response.body
+    var response = http().get(baseurl + this.type + "/" + id);
+    var responseJson = JSON.parse(response.body);
+    var res = responseJson.data
     // var result = {};
     // if (res.data.mal_id !== undefined) {
     //     result["mal_id"] = res.data.mal_id;
